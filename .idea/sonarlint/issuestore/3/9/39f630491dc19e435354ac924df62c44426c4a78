@@ -1,0 +1,5 @@
+
+qsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC
+Msquid:S1068
+"*Remove this unused "driver" private field.(š…ŒÅøÿÿÿÿ8ğÓ–Êô-
+lsquid:UselessImportCheck"<Remove this unused import 'org.openqa.selenium.support.How'.(¯ÏªŞøÿÿÿÿ8¢Ú’áõ-
