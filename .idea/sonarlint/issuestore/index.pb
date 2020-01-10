@@ -23,3 +23,11 @@ V
 +src/test/java/test/PhpTravelsCheckData.java,0\5\057d970cf7f8f0aacd0546ee28876ee3d78f78ca
 Q
 !src/main/java/util/Constants.java,e\9\e974e9c0ee11a3fbaefcd4b93a7d1eb341dc67ee
+Y
+)src/test/java/test/BrowserSearchTest.java,7\d\7dcb07760a23c1ebaaa66d10530daabbbf3eed64
+V
+&src/main/java/Pages/BrowserSearch.java,a\b\abe533380e419e6fbbcec49eee57c0ff94b891ea
+L
+src/test/java/test/Guru.java,1\b\1bd8b8461e42acd7a2be8de94351a74ae75af1cc
+Q
+!src/main/java/Pages/GuroPage.java,1\a\1af8507649974132a6c6874c7c66a7069b6d962c

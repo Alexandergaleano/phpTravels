@@ -3,19 +3,21 @@ package test;
 import Pages.PageCheckData;
 import Pages.PageTourOfDubai;
 import com.github.javafaker.Faker;
+import com.google.common.base.Function;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
 import util.Constants;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class PhpTravelsCheckData {
 
@@ -84,9 +86,7 @@ public class PhpTravelsCheckData {
         pageCheckData.sendPassport(PASSPORT);
         pageCheckData.sendAge("26");
         js.executeScript ("window.scrollBy (0,400)");
-        Thread.sleep(2000);
         pageCheckData.clickButtonConfirm();
-        Thread.sleep(10000);
         pageCheckData.ClickButtonPayOnArrival();
         Alert alert = driver.switchTo().alert();
         alert.accept();
@@ -98,10 +98,8 @@ public class PhpTravelsCheckData {
         driver.get(baseUrl);
         PageCheckData pageCheckData = new PageCheckData(driver);
         pageCheckData.clickButtonSingIn();
-        Thread.sleep(1000);
         js.executeScript ("window.scrollBy (0,300)");
         pageCheckData.sendEmailPersonal("alexgaleanol34@hotmail.com");
-        Thread.sleep(1000);
         pageCheckData.sendPassword("1234567899");
         pageCheckData.sendName(FIRSTNAME);
         pageCheckData.sendPassport(PASSPORT);
@@ -109,7 +107,6 @@ public class PhpTravelsCheckData {
         js.executeScript ("window.scrollBy (0,200)");
         pageCheckData.clickButtonGOIti();
         pageCheckData.clickButtonConfirm();
-        Thread.sleep(10000);
         pageCheckData.ClickButtonPayOnArrival();
         Alert alert = driver.switchTo().alert();
         alert.accept();

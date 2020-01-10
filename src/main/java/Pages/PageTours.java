@@ -1,9 +1,12 @@
 package Pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageTours {
     private WebDriver driver;
@@ -41,6 +44,9 @@ public class PageTours {
     @FindBy(xpath = "//*[@id=\"tours\"]/div/div/form/div/div/div[4]/button")
     WebElement buttonSearch;
 
+    @FindBy(xpath = "//*[@id=\"detail-content-sticky-nav-00\"]")
+    WebElement welcomeTour;
+
 
     public PageTours(WebDriver driver) {
         this.driver = driver;
@@ -48,9 +54,16 @@ public class PageTours {
     }
 
     public void clickButtonTours(){
+        waitForElment(buttonTours);
         clickOnElement(buttonTours);
     }
+    public void waitForElment(WebElement element){
+
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
     public void clickDestination(){
+        waitForElment(destination);
         clickOnElement(destination);
     }
     public void sendDestination(String Destination){
@@ -88,6 +101,10 @@ public class PageTours {
         clickOnElement(buttonSearch);
     }
 
+    public String searchTour() {
+        return welcomeTour.getText();
+    }
+
     public void clickOnElement(WebElement element){
         element.click();
     }
@@ -95,4 +112,6 @@ public class PageTours {
     public void sendText(WebElement element,String text){
         element.sendKeys(text);
     }
+
+
 }

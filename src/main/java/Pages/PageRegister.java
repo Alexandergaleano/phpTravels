@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PageRegister {
     private WebDriver driver;
@@ -39,6 +41,10 @@ public class PageRegister {
     @FindBy(xpath= "//*[@id=\"headersignupform\"]/div[9]/button")
     WebElement clickSingUp;
 
+    @FindBy(xpath= "//*[@id=\"headersignupform\"]/div[2]/div")
+    WebElement alertEmail;
+
+
 
     public PageRegister(WebDriver driver) {
         this.driver = driver;
@@ -46,9 +52,11 @@ public class PageRegister {
     }
 
     public void clickButtonMyAccount(){
+        waitForElment(buttonMyAccount);
         clickOnElement(buttonMyAccount);
     }
     public void clickButtonSingUp(){
+        waitForElment(buttonSingUp);
         clickOnElement(buttonSingUp);
     }
     public void sendFirstName(String firstName){
@@ -70,10 +78,22 @@ public class PageRegister {
         sendText(txtConfirmPassword,confirmPassword);
     }
     public void clickButtonGOIti(){
+        waitForElment(buttonGOIti);
         clickOnElement(buttonGOIti);
     }
     public void clickButtonRegister(){
         clickOnElement(clickSingUp);
+    }
+
+    public boolean isAlertEmailPresent(){
+
+        return alertEmail.isDisplayed();
+    }
+
+    public void waitForElment(WebElement element){
+
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
     }
 
     public void clickOnElement(WebElement element){

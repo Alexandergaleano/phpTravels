@@ -1,5 +1,5 @@
 
-Msquid:S1068	"*Remove this unused "driver" private field.(š…ŒÅøÿÿÿÿ8Ì…¬¸õ-
+^squid:UselessImportCheck"3Remove this unused import 'org.openqa.selenium.By'.(ÿŠŞ›8†ˆ¿æø-
+psquid:S00117F"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥û8¯Õ´¹õ-
+}squid:S00116"YRename this field "TxtDestination" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½•éÛşÿÿÿÿ8¯Õ´¹õ-
 qsquid:S00120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(š¢òC
-psquid:S001178"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¥û8¯Õ´¹õ-
-}squid:S00116"YRename this field "TxtDestination" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(½•éÛşÿÿÿÿ8¯Õ´¹õ-

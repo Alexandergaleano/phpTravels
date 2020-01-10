@@ -1,9 +1,18 @@
 package Pages;
 
+import com.google.common.base.Function;
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 public class PageCheckData {
     private WebDriver driver;
@@ -63,71 +72,100 @@ public class PageCheckData {
     WebElement clickButtonPayOnArrival;
 
 
-
     public PageCheckData(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    public void sendFirstName(String firstname){
-        sendText(txtFirstName,firstname);
-    }
-    public void sendLastName(String Lastname){
-        sendText(txtLastName,Lastname);
-    }
-    public void sendEmail(String email){
-        sendText(txtEmail,email);
-    }
-    public void sendConfirmEmail(String confirmemail){
-        sendText(txtConfirmEmail,confirmemail);
-    }
-    public void sendContactNumber(String contactnumber){
-        sendText(txtContactNumber,contactnumber);
-    }
-    public void sendAddress(String address){
-        sendText(txtAddress,address);
-    }
-    public void clickCountry(){
-        clickOnElement(clickCountry);
-    }
-    public void clickButtonGOIti(){
-        clickOnElement(buttonGOIti);
-    }
-    public void sendCountry(String country){
-        sendText(sendCountry,country);
-    }
-    public void selectCountry(){
-        clickOnElement(slectCountry);
-    }
-    public void clickButtonSingIn(){
-        clickOnElement(singIn);
-    }
-    public void sendEmailPersonal(String email){
-        sendText(txtEmailPersonal,email);
-    }
-    public void sendPassword(String password){
-        sendText(txtPassword,password);
-    }
-    public void sendName(String name){
-        sendText(txtName,name);
-    }
-    public void sendPassport(String passport){
-        sendText(txtPassport,passport);
-    }
-    public void sendAge(String age){
-        sendText(txtAge,age);
+
+    public void sendFirstName(String firstname) {
+        sendText(txtFirstName, firstname);
     }
 
-    public void clickButtonConfirm(){
+    public void sendLastName(String Lastname) {
+        sendText(txtLastName, Lastname);
+    }
+
+    public void sendEmail(String email) {
+        sendText(txtEmail, email);
+    }
+
+    public void sendConfirmEmail(String confirmemail) {
+        sendText(txtConfirmEmail, confirmemail);
+    }
+
+    public void sendContactNumber(String contactnumber) {
+        sendText(txtContactNumber, contactnumber);
+    }
+
+    public void sendAddress(String address) {
+        sendText(txtAddress, address);
+    }
+
+    public void clickCountry() {
+        clickOnElement(clickCountry);
+    }
+
+    public void clickButtonGOIti() {
+        clickOnElement(buttonGOIti);
+    }
+
+    public void sendCountry(String country) {
+        sendText(sendCountry, country);
+    }
+
+    public void selectCountry() {
+        clickOnElement(slectCountry);
+    }
+
+    public void clickButtonSingIn() {
+        clickOnElement(singIn);
+    }
+
+    public void sendEmailPersonal(String email) {
+        waitForElment(txtEmailPersonal);
+        sendText(txtEmailPersonal, email);
+    }
+
+    public void sendPassword(String password) {
+        waitForElment(txtPassword);
+        sendText(txtPassword, password);
+    }
+
+    public void sendName(String name) {
+        sendText(txtName, name);
+    }
+
+    public void sendPassport(String passport) {
+        sendText(txtPassport, passport);
+    }
+
+    public void sendAge(String age) {
+        sendText(txtAge, age);
+    }
+
+    public void clickButtonConfirm() {
+        waitForElment(clickButtonConfirm);
         clickOnElement(clickButtonConfirm);
     }
-    public void ClickButtonPayOnArrival(){
+
+    public void ClickButtonPayOnArrival() {
+        waitForElment(clickButtonPayOnArrival);
         clickOnElement(clickButtonPayOnArrival);
     }
 
-    public void clickOnElement(WebElement element){
+    public void clickOnElement(WebElement element) {
         element.click();
     }
-    public void sendText(WebElement element,String text){
+
+    public void sendText(WebElement element, String text) {
         element.sendKeys(text);
     }
+
+    public void waitForElment(WebElement element){
+
+        WebDriverWait wait = new WebDriverWait(driver,10);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+
 }

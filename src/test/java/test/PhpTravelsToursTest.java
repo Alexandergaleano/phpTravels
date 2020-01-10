@@ -5,6 +5,7 @@ import Pages.PageTours;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,22 +27,20 @@ public class PhpTravelsToursTest {
         driver = new ChromeDriver(options);
     }
 
-   /* @Before // preparacion de pruebas
+  /*  @Before // preparacion de pruebas
     public void setUpFirefox() throws Exception {
         FirefoxOptions options = new FirefoxOptions();
         System.setProperty ("webdriver.gecko.driver", Constants.PATHDRIVERFIREFOX +"geckodriver.exe");
         driver = new FirefoxDriver(options);
-    }*/
-
+    }
+*/
     @Test // pruebas
     public void Tours()throws Exception {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         driver.get(baseUrl);
         PageTours pageTours = new PageTours(driver);
-        Thread.sleep(5000);
         js.executeScript ("window.scrollBy (0,100)");
         pageTours.clickButtonTours();
-        Thread.sleep(2000);
         pageTours.clickDestination();
         pageTours.sendDestination("Big Bus Tour of Dubai");
         pageTours.clickSelectDestination();
@@ -53,11 +52,12 @@ public class PhpTravelsToursTest {
         pageTours.clickSelectDay();
         pageTours.clickbuttonMaxAdults();
         pageTours.clickbuttonSearch();
+        assertEquals("Big Bus Tour of Dubai",pageTours.searchTour());
     }
     @After
     public void close() throws Exception {
-        Thread.sleep(3000);
-        driver.close();
+        Thread.sleep(2000);
+            driver.close();
     }
 
 }

@@ -2,15 +2,16 @@ package test;
 
 import Pages.PageRegister;
 import com.github.javafaker.Faker;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
+import static org.junit.Assert.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import util.Constants;
+
+import java.util.concurrent.TimeUnit;
 
 public class PhpTravelsRegisterTest {
 
@@ -33,8 +34,9 @@ public class PhpTravelsRegisterTest {
         System.setProperty ("webdriver.chrome.driver", Constants.PATHDRIVERCHROME +"chromedriver.exe");
         options.addArguments("start-maximized");
         driver = new ChromeDriver(options);
-
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
+
 
      /* @Before // preparacion de pruebas
       public void setUpFirefox() throws Exception {
@@ -52,24 +54,23 @@ public class PhpTravelsRegisterTest {
     public void singUp()throws Exception {
         driver.get(baseUrl);
         PageRegister pageRegister = new PageRegister (driver);
-        Thread.sleep(5000);
         pageRegister.clickButtonMyAccount();
-        Thread.sleep(2000);
         pageRegister.clickButtonSingUp();
-        Thread.sleep(2000);
         pageRegister.sendFirstName(FIRSTNAME);
         pageRegister.sendLastName(LASTNAME);
         pageRegister.sendMobileNumber(PHONENUMBER);
-        pageRegister.sendEmail(EMAIL);
+        pageRegister.sendEmail("alexgaleanol34@hotmail.com");
         pageRegister.sendPassword("1234567899");
         pageRegister.sendConfirmPassword("1234567899");
-        Thread.sleep(2000);
         pageRegister.clickButtonGOIti();
         pageRegister.clickButtonRegister();
+        Thread.sleep(2000);
+        assertTrue(pageRegister.isAlertEmailPresent());
+
     }
     @After
     public void close() throws Exception {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         driver.close();
     }
 }
